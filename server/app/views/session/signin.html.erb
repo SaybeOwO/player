@@ -1,0 +1,7 @@
+<h1>Sign in</h1>
+
+<%= form_with model: @user, url: signin_path, data: { turbo: false} do |form|%> <!-- turbo false per disabilitare handler automatico link che non causava error -->
+    Email: <%= form.text_field :email%><br>
+    Password<%= form.password_field :password%><br>
+    <%= form.submit "Sign in"%>
+<% end %>

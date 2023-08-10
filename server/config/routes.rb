@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   get "signup", to: "registration#signup"
   post "signup", to: "registration#create"
 
+  get "signin", to: "session#signin"
+  post "signin", to: "session#create"
+
+  delete "logout", to: "session#destroy"
+
   #get 'sign_up', to "registrations#signup"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
