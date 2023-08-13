@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   get "playlist", to: "home#playlist"
 
-  get "addvideo", to: "home#addvideo"
+  get "addsong", to: "song#addsong"
+  post "addsong", to: "song#create"
 
   get "signup", to: "registration#signup"
   post "signup", to: "registration#create"
