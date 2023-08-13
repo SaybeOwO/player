@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   #get 'home/index'
   root "home#index"#imposta come root home index (non serve usare endpoint home/index)
 
+  get "playlist", to: "home#playlist"
+
+  get "addvideo", to: "home#addvideo"
+
   get "signup", to: "registration#signup"
   post "signup", to: "registration#create"
 
