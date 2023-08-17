@@ -1,3 +1,5 @@
+<%= @user.id %>
+
 <%= form_with(model: temp) do |form| %>
   <% if temp.errors.any? %>
     <div style="color: red">
@@ -14,11 +16,10 @@
   <div>
     <%= form.label :link, style: "display: block" %>
     <%= form.text_field :link %>
-  </div>
+  </div>  
 
   <div>
-    <%= form.label :uid, style: "display: block" %>
-    <%= form.number_field :uid %>
+    <%= form.hidden_field :uid, value: 1 %>
   </div>
 
   <div>

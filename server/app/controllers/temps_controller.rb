@@ -1,11 +1,16 @@
 class TempsController < ApplicationController
   before_action :set_temp, only: %i[ show edit update destroy ]
 
-  # GET /temps or /temps.json
-  def index
+
+  def loadsession
     if session[:user_id]
       @user = User.find(session[:user_id])
     end
+  end
+
+  # GET /temps or /temps.json
+  def index
+    loadsession
     @temps = Temp.where(uid: @user.id)#sistema _______________________________________
     #render @user
   end
@@ -17,14 +22,17 @@ class TempsController < ApplicationController
   # GET /temps/new
   def new
     @temp = Temp.new
+    loadsession
   end
 
   # GET /temps/1/edit
   def edit
+    loadsession
   end
 
   # POST /temps or /temps.json
   def create
+    loadsession
     @temp = Temp.new(temp_params)
 
     respond_to do |format|
@@ -40,6 +48,7 @@ class TempsController < ApplicationController
 
   # PATCH/PUT /temps/1 or /temps/1.json
   def update
+    loadsession
     respond_to do |format|
       if @temp.update(temp_params)
         format.html { redirect_to temp_url(@temp), notice: "Temp was successfully updated." }
