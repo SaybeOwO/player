@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
-  resources :temps
+  resources :songs
   #get 'home/index'
   root "home#index"#imposta come root home index (non serve usare endpoint home/index)
 
   get "playlist", to: "home#playlist"
 
-  get "test", to: "temps#index"
-
-  get "addsong", to: "song#addsong"
-  post "addsong", to: "song#create"
+  get "mysongs", to: "songs#index"
 
   get "signup", to: "registration#signup"
   post "signup", to: "registration#create"

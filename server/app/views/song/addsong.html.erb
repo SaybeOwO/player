@@ -1,7 +1,0 @@
-<h1>Add song</h1>
-
-<%= form_with model: @song, url: addsong_path, data: { turbo: false} do |form|%> <!-- turbo false per disabilitare handler automatico link che non causava error -->
-    link: <%= form.text_field :link%><br>
-    uid: <%= form.text_field :uid%><br>
-    <%= form.submit "Add song"%>
-<% end %>

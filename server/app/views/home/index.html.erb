@@ -1,7 +1,7 @@
 <h1>HOME PAGE</h1>
 <% if @user %>
     <%= @user.id %>
-    <%= link_to "Add song", temps_path %>
+    <%= link_to "Add song", songs_path %>
 
 <% else %>
     <%= render plain: "Not logged yet"%>
