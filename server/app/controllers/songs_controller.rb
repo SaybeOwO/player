@@ -1,6 +1,11 @@
 class SongsController < ApplicationController
   before_action :set_song, only: %i[ show edit update destroy ]
-
+  
+  after_action :allow_iframe, only: :embed  
+  
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
+  end
 
   def loadsession
     if session[:user_id]
