@@ -16,12 +16,12 @@ class SongsController < ApplicationController
   # GET /songs or /songs.json
   def index 
     loadsession
-    @songs = Song.where(uid: @user.id)#sistema _______________________________________
-    #render @user
+    @songs = Song.where(uid: @user.id)
   end
 
   # GET /songs/1 or /songs/1.json
   def show
+    loadsession
   end
 
   # GET /songs/new
@@ -39,6 +39,7 @@ class SongsController < ApplicationController
   def create
     loadsession
     @song = Song.new(song_params)
+    @song.link = "https://youtube.com/embed/"+youtube_embed(@song.link)
 
     respond_to do |format|
       if @song.save
@@ -49,6 +50,17 @@ class SongsController < ApplicationController
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # src: http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url/4811367#4811367
+  def youtube_embed(youtube_url)
+    if youtube_url[/youtu\.be\/([^\?]*)/]
+      youtube_id = $1
+    else
+      youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+      youtube_id = $5
+    end
+    return youtube_id
   end
 
   # PATCH/PUT /songs/1 or /songs/1.json

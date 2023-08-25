@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>songs</h1>
-<%= @user.id %>
+<h1>Songs</h1>
+<%= link_to "New song", new_song_path, class:"btn btn-dark"%><br><br>
 <div id="songs">
   <% @songs.each do |song| %>
     <%= render song %>
     <p>
-      <%= link_to "Show this song", song %> 
+      <%= link_to "Show this song", song , class:"btn btn-secondary"%> 
     </p>
+    <br><br >
   <% end %>
 </div>
-
-<%= link_to "New song", new_song_path %>
