@@ -3,5 +3,7 @@
 class User < ApplicationRecord
     has_secure_password #per password cifrata
 
-    validates :email, presence: true#controlla che venga inserita una mail
+    has_many :songs, foreign_key: :uid
+
+    validates :email, presence: true, uniqueness: true #controlla che venga inserita una mail
 end
